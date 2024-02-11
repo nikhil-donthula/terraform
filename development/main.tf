@@ -8,6 +8,14 @@ terraform {
   }
 
   required_version = ">= 1.6.6"
+
+  #use this block only if you want to use remote state file
+  backend "azurerm" {
+    resource_group_name  = "tfstate"
+    storage_account_name = "tfstatec7ftv"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
@@ -18,9 +26,9 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = "eastus2"
-   tags = {
+  tags = {
     Environment = "Terraform Created Env"
-    Team = "DevOps"
+    Team        = "DevOps"
   }
 }
 
