@@ -97,3 +97,7 @@ terraform apply -var "resource_group_name=bottleNewResourceGroupName"
 ```
 terraform output
 ```
+
+
+
+After adding, removing, or modifying module blocks, you must re-run '''terraform init''' to allow Terraform the opportunity to adjust the installed modules. By default this command will not upgrade an already-installed module; use the -upgrade option to instead upgrade to the newest available version.

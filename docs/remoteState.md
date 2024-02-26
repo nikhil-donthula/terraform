@@ -1,4 +1,7 @@
 https://learn.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=terraform
+
+https://developer.hashicorp.com/terraform/language/settings/backends/azurerm
+
 First execute create-remote-storage.tf file in remotestate folder byusing
 ```
 cd remotestate
@@ -18,7 +21,7 @@ now add backend block in main.tf
 ```
   backend "azurerm" {
     resource_group_name  = "tfstate"
-    storage_account_name = "tfstatec7ftv"
+    storage_account_name = "tfstatec7ftv" #replae with new name if created again
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
@@ -30,3 +33,7 @@ cd ..
 terraform init
 terraform apply
 ```
+you can see the state file in the container.
+When commands are executed - lease status will be "locked"
+-lease status as "leased"
+ 
